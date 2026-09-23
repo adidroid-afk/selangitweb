@@ -1,15 +1,15 @@
 <!doctype html>
-<html lang="en">
+<html lang="id">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Selangit.Com - AI Ecosystem News Hub</title>
+    <title>Selangit.Com - Pusat Berita Ekosistem AI</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
     <style>
-      /* Inline styles ensure theme colors apply immediately, avoiding flash */
+      /* Gaya inline memastikan warna tema langsung diterapkan, menghindari kedipan */
       html,
       body {
         margin: 0;
@@ -29,7 +29,7 @@
       }
     </style>
     <script>
-      // Apply theme immediately before React loads to prevent flash
+      // Terapkan tema segera sebelum React dimuat untuk mencegah kedipan
       (function () {
         const isInIframe = window.self !== window.top;
 
@@ -40,7 +40,7 @@
         }
 
         if (isInIframe) {
-          // Listen for theme messages pushed from parent window
+          // Dengarkan pesan tema yang dikirim dari jendela induk
           window.addEventListener("message", function (event) {
             if (event.data && typeof event.data.theme === "string") {
               const theme = event.data.theme;
@@ -50,7 +50,7 @@
             }
           });
         } else {
-          // Not in iframe environment, use default light theme
+          // Bukan di lingkungan iframe, gunakan tema terang default
           applyThemeToDOM("light");
         }
       })();
@@ -60,11 +60,11 @@
         if (window.self === window.top) return;
         var reported = {};
         window.addEventListener("error", function (event) {
-          // Resource load failure error events have no message; only report JS runtime errors here
+          // Event error kegagalan pemuatan sumber daya tidak memiliki pesan; hanya laporkan kesalahan runtime JS di sini
           if (!event || !event.message) return;
           var key =
             event.message + "|" + (event.filename || "") + "|" + (event.lineno || 0);
-          if (reported[key]) return; // Report the same error only once to avoid flooding the render loop
+          if (reported[key]) return; // Laporkan kesalahan yang sama hanya sekali untuk menghindari banjir pada loop render
           reported[key] = true;
           try {
             window.parent.postMessage(
@@ -84,7 +84,7 @@
               "*"
             );
           } catch (e) {
-            /* Reporting failure does not affect page operation */
+            /* Kegagalan pelaporan tidak memengaruhi operasi halaman */
           }
         });
       })();

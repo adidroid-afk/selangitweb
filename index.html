@@ -26,39 +26,21 @@
     ::-webkit-scrollbar-thumb { background: #374151; border-radius: 4px; }
     ::-webkit-scrollbar-thumb:hover { background: #4b5563; }
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
-    }
-    @keyframes glow {
-      0%, 100% { box-shadow: 0 0 20px rgba(6, 182, 212, 0.1); }
-      50% { box-shadow: 0 0 40px rgba(6, 182, 212, 0.2); }
-    }
-    @keyframes slideUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    @keyframes breaking {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.5; }
-    }
+    @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
+    @keyframes glow { 0%, 100% { box-shadow: 0 0 20px rgba(6, 182, 212, 0.1); } 50% { box-shadow: 0 0 40px rgba(6, 182, 212, 0.2); } }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes breaking { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+
     .animate-float { animation: float 6s ease-in-out infinite; }
     .animate-glow { animation: glow 3s ease-in-out infinite; }
     .animate-slide-up { animation: slideUp 0.8s ease-out forwards; }
     .animate-fade-in { animation: fadeIn 1s ease-out forwards; }
     .animate-breaking { animation: breaking 2s ease-in-out infinite; }
 
-    .news-card {
-      transition: all 0.3s ease;
-    }
-    .news-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 40px rgba(6, 182, 212, 0.1);
-    }
+    .news-card { transition: all 0.3s ease; }
+    .news-card:hover { transform: translateY(-4px); box-shadow: 0 10px 40px rgba(6, 182, 212, 0.1); }
+    .news-card a.news-title { transition: color 0.3s ease; }
 
     .gradient-text {
       background: linear-gradient(to right, #22d3ee, #3b82f6, #9333ea);
@@ -68,50 +50,42 @@
     }
 
     .grid-pattern {
-      background-image: 
+      background-image:
         linear-gradient(rgba(6,182,212,0.03) 1px, transparent 1px),
         linear-gradient(90deg, rgba(6,182,212,0.03) 1px, transparent 1px);
       background-size: 60px 60px;
     }
 
-    .nav-link {
-      position: relative;
-    }
+    .nav-link { position: relative; }
     .nav-link::after {
       content: '';
       position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 2px;
+      bottom: -4px; left: 0;
+      width: 0; height: 2px;
       background: linear-gradient(to right, #22d3ee, #9333ea);
       transition: width 0.3s ease;
     }
-    .nav-link:hover::after {
-      width: 100%;
-    }
+    .nav-link:hover::after { width: 100%; }
 
-    .btn-shine {
-      position: relative;
-      overflow: hidden;
-    }
+    .btn-shine { position: relative; overflow: hidden; }
     .btn-shine::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
       background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
       transition: left 0.5s ease;
     }
-    .btn-shine:hover::before {
-      left: 100%;
-    }
+    .btn-shine:hover::before { left: 100%; }
 
-    .breaking-badge {
-      background: linear-gradient(90deg, #ef4444, #dc2626);
-    }
+    /* Hover warna per kategori */
+    .hover-cyan .news-title:hover { color: #22d3ee !important; }
+    .hover-purple .news-title:hover { color: #c084fc !important; }
+    .hover-blue .news-title:hover { color: #60a5fa !important; }
+    .hover-green .news-title:hover { color: #4ade80 !important; }
+    .hover-orange .news-title:hover { color: #fb923c !important; }
+    .hover-red .news-title:hover { color: #f87171 !important; }
+    .hover-yellow .news-title:hover { color: #facc15 !important; }
   </style>
 </head>
 <body class="min-h-screen">
@@ -120,12 +94,12 @@
   <nav class="fixed top-0 left-0 right-0 z-50 bg-gray-950/90 backdrop-blur-xl border-b border-cyan-500/20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16">
-        <div class="flex items-center space-x-2">
+        <a href="#" class="flex items-center space-x-2">
           <div class="w-8 h-8 bg-gradient-to-br from-cyan-400 to-purple-600 rounded-lg flex items-center justify-center">
             <span class="text-white font-bold text-sm">S</span>
           </div>
           <span class="text-xl font-bold gradient-text">Selangit.Com</span>
-        </div>
+        </a>
 
         <div class="hidden lg:flex items-center space-x-5">
           <a href="#pusat-data-ai" class="nav-link text-gray-300 hover:text-cyan-400 transition-colors text-sm font-medium">Pusat Data AI</a>
@@ -172,19 +146,19 @@
     </div>
 
     <div class="relative z-10 max-w-5xl mx-auto px-4 text-center">
-      <div class="inline-flex items-center px-4 py-2 bg-red-500/10 border border-red-500/20 rounded-full mb-8 animate-fade-in">
+      <a href="https://www.nobelprize.org/prizes/physics/2024/press-release/" target="_blank" class="inline-flex items-center px-4 py-2 bg-red-500/10 border border-red-500/20 rounded-full mb-8 animate-fade-in hover:bg-red-500/20 transition-colors">
         <span class="w-2 h-2 bg-red-400 rounded-full animate-breaking mr-2"></span>
         <span class="text-red-400 text-sm font-medium">BREAKING: John Hopfield & Geoffrey Hinton Raih Nobel Fisika 2024 untuk AI</span>
-      </div>
-      
+      </a>
+
       <h1 class="text-5xl md:text-7xl font-bold mb-6 animate-slide-up">
         <span class="text-white">Gerbang Anda Menuju</span><br />
         <span class="gradient-text">Dunia Kecerdasan Buatan</span>
       </h1>
-      
+
       <p class="text-xl text-gray-400 max-w-3xl mx-auto mb-10 leading-relaxed animate-slide-up" style="animation-delay: 0.2s;">
-        Tetap terdepan dengan informasi terkini seputar Pusat Data AI, Sistem Agentik, 
-        Aplikasi LLM, Kendaraan Otonom, Keamanan AI, dan pencapaian Nobel Fisika 
+        Tetap terdepan dengan informasi terkini seputar Pusat Data AI, Sistem Agentik,
+        Aplikasi LLM, Kendaraan Otonom, Keamanan AI, dan pencapaian Nobel Fisika
         yang membentuk masa depan dunia.
       </p>
 
@@ -223,7 +197,7 @@
   </section>
 
   <!-- PUSAT DATA AI -->
-  <section id="pusat-data-ai" class="py-20 relative">
+  <section id="pusat-data-ai" class="py-20 relative hover-cyan">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center space-x-4 mb-8">
         <span class="text-4xl">🏢</span>
@@ -233,60 +207,60 @@
         </div>
       </div>
       <div class="grid md:grid-cols-3 gap-6">
-        <div class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-cyan-500/30 cursor-pointer">
+        <a href="https://blogs.nvidia.com/blog/blackwell-gb200-nvl72/" target="_blank" class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-cyan-500/30 cursor-pointer block">
           <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-4 bg-cyan-500/10 text-cyan-400">Terbaru</div>
-          <h3 class="text-lg font-semibold text-white hover:text-cyan-400 transition-colors mb-3">NVIDIA Blackwell B200 GPU Mulai Diproduksi Massal untuk Pusat Data AI</h3>
+          <h3 class="news-title text-lg font-semibold text-white mb-3">NVIDIA Blackwell B200 GPU Mulai Diproduksi Massal untuk Pusat Data AI</h3>
           <div class="flex items-center text-sm text-gray-500">
             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             1 jam lalu
           </div>
-        </div>
-        <div class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-cyan-500/30 cursor-pointer">
+        </a>
+        <a href="https://aws.amazon.com/id/blogs/aws/" target="_blank" class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-cyan-500/30 cursor-pointer block">
           <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-4 bg-cyan-500/10 text-cyan-400">Investasi</div>
-          <h3 class="text-lg font-semibold text-white hover:text-cyan-400 transition-colors mb-3">Amazon Web Services Investasi $15 Miliar untuk Pusat Data AI di Indonesia</h3>
+          <h3 class="news-title text-lg font-semibold text-white mb-3">Amazon Web Services Investasi $15 Miliar untuk Pusat Data AI di Indonesia</h3>
           <div class="flex items-center text-sm text-gray-500">
             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             3 jam lalu
           </div>
-        </div>
-        <div class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-cyan-500/30 cursor-pointer">
+        </a>
+        <a href="https://blog.google/technology/ai/nuclear-energy-ai-data-centers/" target="_blank" class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-cyan-500/30 cursor-pointer block">
           <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-4 bg-cyan-500/10 text-cyan-400">Energi</div>
-          <h3 class="text-lg font-semibold text-white hover:text-cyan-400 transition-colors mb-3">Google Uji Coba Reaktor Nuklir Mini untuk Daya Pusat Data AI</h3>
+          <h3 class="news-title text-lg font-semibold text-white mb-3">Google Uji Coba Reaktor Nuklir Mini untuk Daya Pusat Data AI</h3>
           <div class="flex items-center text-sm text-gray-500">
             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             5 jam lalu
           </div>
-        </div>
-        <div class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-cyan-500/30 cursor-pointer">
+        </a>
+        <a href="https://www.datacenterdynamics.com/en/news/immersion-cooling-ai-data-centers/" target="_blank" class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-cyan-500/30 cursor-pointer block">
           <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-4 bg-cyan-500/10 text-cyan-400">Pendinginan</div>
-          <h3 class="text-lg font-semibold text-white hover:text-cyan-400 transition-colors mb-3">Teknologi Immersion Cooling Baru Pangkas Konsumsi Energi 40% di Pusat Data</h3>
+          <h3 class="news-title text-lg font-semibold text-white mb-3">Teknologi Immersion Cooling Baru Pangkas Konsumsi Energi 40% di Pusat Data</h3>
           <div class="flex items-center text-sm text-gray-500">
             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             7 jam lalu
           </div>
-        </div>
-        <div class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-cyan-500/30 cursor-pointer">
+        </a>
+        <a href="https://www.amd.com/en/products/accelerators/instinct/mi350.html" target="_blank" class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-cyan-500/30 cursor-pointer block">
           <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-4 bg-cyan-500/10 text-cyan-400">Chip Kustom</div>
-          <h3 class="text-lg font-semibold text-white hover:text-cyan-400 transition-colors mb-3">AMD MI350X AI Accelerator Tantang Dominasi NVIDIA di Pasar Pusat Data</h3>
+          <h3 class="news-title text-lg font-semibold text-white mb-3">AMD MI350X AI Accelerator Tantang Dominasi NVIDIA di Pasar Pusat Data</h3>
           <div class="flex items-center text-sm text-gray-500">
             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             10 jam lalu
           </div>
-        </div>
-        <div class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-cyan-500/30 cursor-pointer">
+        </a>
+        <a href="https://www.reuters.com/technology/uae-build-largest-ai-data-center-middle-east-2025/" target="_blank" class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-cyan-500/30 cursor-pointer block">
           <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-4 bg-cyan-500/10 text-cyan-400">Global</div>
-          <h3 class="text-lg font-semibold text-white hover:text-cyan-400 transition-colors mb-3">Uni Emirat Arab Bangun Pusat Data AI Terbesar di Timur Tengah</h3>
+          <h3 class="news-title text-lg font-semibold text-white mb-3">Uni Emirat Arab Bangun Pusat Data AI Terbesar di Timur Tengah</h3>
           <div class="flex items-center text-sm text-gray-500">
             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             12 jam lalu
           </div>
-        </div>
+        </a>
       </div>
     </div>
   </section>
 
   <!-- PROYEK AI -->
-  <section id="proyek-ai" class="py-20 relative bg-gray-900/30">
+  <section id="proyek-ai" class="py-20 relative bg-gray-900/30 hover-purple">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center space-x-4 mb-8">
         <span class="text-4xl">🚀</span>
@@ -296,60 +270,60 @@
         </div>
       </div>
       <div class="grid md:grid-cols-3 gap-6">
-        <div class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-purple-500/30 cursor-pointer">
+        <a href="https://openai.com/index/introducing-o1-pro/" target="_blank" class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-purple-500/30 cursor-pointer block">
           <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-4 bg-purple-500/10 text-purple-400">Terbaru</div>
-          <h3 class="text-lg font-semibold text-white hover:text-purple-400 transition-colors mb-3">OpenAI Luncurkan o1-pro: Model AI dengan Penalaran Tingkat Expert</h3>
+          <h3 class="news-title text-lg font-semibold text-white mb-3">OpenAI Luncurkan o1-pro: Model AI dengan Penalaran Tingkat Expert</h3>
           <div class="flex items-center text-sm text-gray-500">
             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             30 menit lalu
           </div>
-        </div>
-        <div class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-purple-500/30 cursor-pointer">
+        </a>
+        <a href="https://deepmind.google/discover/blog/alphafold-3-predicts-the-structure-and-interactions-of-all-lifes-molecules/" target="_blank" class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-purple-500/30 cursor-pointer block">
           <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-4 bg-purple-500/10 text-purple-400">Kesehatan</div>
-          <h3 class="text-lg font-semibold text-white hover:text-purple-400 transition-colors mb-3">AI AlphaFold 3 Temukan 200 Kandidat Obat Kanker Baru dalam 6 Bulan</h3>
+          <h3 class="news-title text-lg font-semibold text-white mb-3">AI AlphaFold 3 Temukan 200 Kandidat Obat Kanker Baru dalam 6 Bulan</h3>
           <div class="flex items-center text-sm text-gray-500">
             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             2 jam lalu
           </div>
-        </div>
-        <div class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-purple-500/30 cursor-pointer">
+        </a>
+        <a href="https://www.nasa.gov/earth/ai-weather-prediction/" target="_blank" class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-purple-500/30 cursor-pointer block">
           <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-4 bg-purple-500/10 text-purple-400">Iklim</div>
-          <h3 class="text-lg font-semibold text-white hover:text-purple-400 transition-colors mb-3">Proyek AI NASA Prediksi Cuaca Ekstrem 30 Hari Lebih Awal</h3>
+          <h3 class="news-title text-lg font-semibold text-white mb-3">Proyek AI NASA Prediksi Cuaca Ekstrem 30 Hari Lebih Awal</h3>
           <div class="flex items-center text-sm text-gray-500">
             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             4 jam lalu
           </div>
-        </div>
-        <div class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-purple-500/30 cursor-pointer">
+        </a>
+        <a href="https://blog.google/technology/google-deepmind/google-gemini-2-0-flash/" target="_blank" class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-purple-500/30 cursor-pointer block">
           <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-4 bg-purple-500/10 text-purple-400">Multimodal</div>
-          <h3 class="text-lg font-semibold text-white hover:text-purple-400 transition-colors mb-3">Google Gemini 2.0 Flash: AI Multimodal Tercepat di Dunia</h3>
+          <h3 class="news-title text-lg font-semibold text-white mb-3">Google Gemini 2.0 Flash: AI Multimodal Tercepat di Dunia</h3>
           <div class="flex items-center text-sm text-gray-500">
             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             6 jam lalu
           </div>
-        </div>
-        <div class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-purple-500/30 cursor-pointer">
+        </a>
+        <a href="https://github.com/deepseek-ai/DeepSeek-R1" target="_blank" class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-purple-500/30 cursor-pointer block">
           <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-4 bg-purple-500/10 text-purple-400">Open Source</div>
-          <h3 class="text-lg font-semibold text-white hover:text-purple-400 transition-colors mb-3">DeepSeek R1: Model AI Open Source China Saingi GPT-4o</h3>
+          <h3 class="news-title text-lg font-semibold text-white mb-3">DeepSeek R1: Model AI Open Source China Saingi GPT-4o</h3>
           <div class="flex items-center text-sm text-gray-500">
             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             8 jam lalu
           </div>
-        </div>
-        <div class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-purple-500/30 cursor-pointer">
+        </a>
+        <a href="https://www.figure.ai/figure-02" target="_blank" class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-purple-500/30 cursor-pointer block">
           <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-4 bg-purple-500/10 text-purple-400">Robotika</div>
-          <h3 class="text-lg font-semibold text-white hover:text-purple-400 transition-colors mb-3">Figure 02 Robot Humanoid AI Mulai Bekerja di Pabrik BMW</h3>
+          <h3 class="news-title text-lg font-semibold text-white mb-3">Figure 02 Robot Humanoid AI Mulai Bekerja di Pabrik BMW</h3>
           <div class="flex items-center text-sm text-gray-500">
             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             1 hari lalu
           </div>
-        </div>
+        </a>
       </div>
     </div>
   </section>
 
   <!-- AI AGENTIK -->
-  <section id="ai-agentik" class="py-20 relative">
+  <section id="ai-agentik" class="py-20 relative hover-blue">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center space-x-4 mb-8">
         <span class="text-4xl">🤖</span>
@@ -359,60 +333,60 @@
         </div>
       </div>
       <div class="grid md:grid-cols-3 gap-6">
-        <div class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-blue-500/30 cursor-pointer">
+        <a href="https://manus.im/" target="_blank" class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-blue-500/30 cursor-pointer block">
           <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-4 bg-blue-500/10 text-blue-400">Terbaru</div>
-          <h3 class="text-lg font-semibold text-white hover:text-blue-400 transition-colors mb-3">Manus AI: Agen AI Umum Pertama yang Bisa Selesaikan Tugas Kompleks</h3>
+          <h3 class="news-title text-lg font-semibold text-white mb-3">Manus AI: Agen AI Umum Pertama yang Bisa Selesaikan Tugas Kompleks</h3>
           <div class="flex items-center text-sm text-gray-500">
             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             45 menit lalu
           </div>
-        </div>
-        <div class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-blue-500/30 cursor-pointer">
+        </a>
+        <a href="https://www.salesforce.com/agentforce/" target="_blank" class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-blue-500/30 cursor-pointer block">
           <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-4 bg-blue-500/10 text-blue-400">Enterprise</div>
-          <h3 class="text-lg font-semibold text-white hover:text-blue-400 transition-colors mb-3">Salesforce Agentforce: 1000+ Perusahaan Adopsi Agen AI untuk CRM</h3>
+          <h3 class="news-title text-lg font-semibold text-white mb-3">Salesforce Agentforce: 1000+ Perusahaan Adopsi Agen AI untuk CRM</h3>
           <div class="flex items-center text-sm text-gray-500">
             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             2 jam lalu
           </div>
-        </div>
-        <div class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-blue-500/30 cursor-pointer">
+        </a>
+        <a href="https://openai.com/index/introducing-operator/" target="_blank" class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-blue-500/30 cursor-pointer block">
           <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-4 bg-blue-500/10 text-blue-400">OpenAI</div>
-          <h3 class="text-lg font-semibold text-white hover:text-blue-400 transition-colors mb-3">Operator AI OpenAI: Agen Web yang Bisa Belanja dan Pesan Tiket</h3>
+          <h3 class="news-title text-lg font-semibold text-white mb-3">Operator AI OpenAI: Agen Web yang Bisa Belanja dan Pesan Tiket</h3>
           <div class="flex items-center text-sm text-gray-500">
             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             4 jam lalu
           </div>
-        </div>
-        <div class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-blue-500/30 cursor-pointer">
+        </a>
+        <a href="https://docs.crewai.com/" target="_blank" class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-blue-500/30 cursor-pointer block">
           <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-4 bg-blue-500/10 text-blue-400">Multi-Agen</div>
-          <h3 class="text-lg font-semibold text-white hover:text-blue-400 transition-colors mb-3">CrewAI v2.0: Framework Multi-Agen dengan Memory Jangka Panjang</h3>
+          <h3 class="news-title text-lg font-semibold text-white mb-3">CrewAI v2.0: Framework Multi-Agen dengan Memory Jangka Panjang</h3>
           <div class="flex items-center text-sm text-gray-500">
             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             6 jam lalu
           </div>
-        </div>
-        <div class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-blue-500/30 cursor-pointer">
+        </a>
+        <a href="https://blog.google/technology/google-deepmind/google-gemini-deep-research/" target="_blank" class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-blue-500/30 cursor-pointer block">
           <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-4 bg-blue-500/10 text-blue-400">Riset</div>
-          <h3 class="text-lg font-semibold text-white hover:text-blue-400 transition-colors mb-3">Deep Research Gemini: Agen AI yang Riset Lengkap dalam Hitungan Menit</h3>
+          <h3 class="news-title text-lg font-semibold text-white mb-3">Deep Research Gemini: Agen AI yang Riset Lengkap dalam Hitungan Menit</h3>
           <div class="flex items-center text-sm text-gray-500">
             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             9 jam lalu
           </div>
-        </div>
-        <div class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-blue-500/30 cursor-pointer">
+        </a>
+        <a href="https://www.jpmorgan.com/insights/reports/ai-agentic" target="_blank" class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-blue-500/30 cursor-pointer block">
           <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-4 bg-blue-500/10 text-blue-400">Keuangan</div>
-          <h3 class="text-lg font-semibold text-white hover:text-blue-400 transition-colors mb-3">JPMorgan Chase Deploy 500+ Agen AI untuk Trading dan Analisis Risiko</h3>
+          <h3 class="news-title text-lg font-semibold text-white mb-3">JPMorgan Chase Deploy 500+ Agen AI untuk Trading dan Analisis Risiko</h3>
           <div class="flex items-center text-sm text-gray-500">
             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             1 hari lalu
           </div>
-        </div>
+        </a>
       </div>
     </div>
   </section>
 
   <!-- KODER LLM -->
-  <section id="koder-llm" class="py-20 relative bg-gray-900/30">
+  <section id="koder-llm" class="py-20 relative bg-gray-900/30 hover-green">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center space-x-4 mb-8">
         <span class="text-4xl">💻</span>
@@ -422,60 +396,60 @@
         </div>
       </div>
       <div class="grid md:grid-cols-3 gap-6">
-        <div class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-green-500/30 cursor-pointer">
+        <a href="https://www.anthropic.com/news/claude-3-7-sonnet" target="_blank" class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-green-500/30 cursor-pointer block">
           <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-4 bg-green-500/10 text-green-400">Terbaru</div>
-          <h3 class="text-lg font-semibold text-white hover:text-green-400 transition-colors mb-3">Claude 3.7 Sonnet: Model AI Pertama dengan Mode Pemrograman Extended Thinking</h3>
+          <h3 class="news-title text-lg font-semibold text-white mb-3">Claude 3.7 Sonnet: Model AI Pertama dengan Mode Pemrograman Extended Thinking</h3>
           <div class="flex items-center text-sm text-gray-500">
             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             1 jam lalu
           </div>
-        </div>
-        <div class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-green-500/30 cursor-pointer">
+        </a>
+        <a href="https://github.blog/news-insights/product-news/github-copilot-the-agent-awakens/" target="_blank" class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-green-500/30 cursor-pointer block">
           <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-4 bg-green-500/10 text-green-400">GitHub</div>
-          <h3 class="text-lg font-semibold text-white hover:text-green-400 transition-colors mb-3">GitHub Copilot Workspace: Dari Issue ke PR Sepenuhnya Otomatis</h3>
+          <h3 class="news-title text-lg font-semibold text-white mb-3">GitHub Copilot Workspace: Dari Issue ke PR Sepenuhnya Otomatis</h3>
           <div class="flex items-center text-sm text-gray-500">
             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             3 jam lalu
           </div>
-        </div>
-        <div class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-green-500/30 cursor-pointer">
+        </a>
+        <a href="https://www.cursor.com/" target="_blank" class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-green-500/30 cursor-pointer block">
           <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-4 bg-green-500/10 text-green-400">Cursor</div>
-          <h3 class="text-lg font-semibold text-white hover:text-green-400 transition-colors mb-3">Cursor AI Capai $9 Miliar Valuasi, 1 Juta Developer Aktif Harian</h3>
+          <h3 class="news-title text-lg font-semibold text-white mb-3">Cursor AI Capai $9 Miliar Valuasi, 1 Juta Developer Aktif Harian</h3>
           <div class="flex items-center text-sm text-gray-500">
             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             5 jam lalu
           </div>
-        </div>
-        <div class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-green-500/30 cursor-pointer">
+        </a>
+        <a href="https://devin.ai/" target="_blank" class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-green-500/30 cursor-pointer block">
           <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-4 bg-green-500/10 text-green-400">Devin</div>
-          <h3 class="text-lg font-semibold text-white hover:text-green-400 transition-colors mb-3">Devin AI Selesaikan 14% Lebih Banyak Task daripada Engineer Manusia</h3>
+          <h3 class="news-title text-lg font-semibold text-white mb-3">Devin AI Selesaikan 14% Lebih Banyak Task daripada Engineer Manusia</h3>
           <div class="flex items-center text-sm text-gray-500">
             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             7 jam lalu
           </div>
-        </div>
-        <div class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-green-500/30 cursor-pointer">
+        </a>
+        <a href="https://www.swebench.com/" target="_blank" class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-green-500/30 cursor-pointer block">
           <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-4 bg-green-500/10 text-green-400">Benchmark</div>
-          <h3 class="text-lg font-semibold text-white hover:text-green-400 transition-colors mb-3">SWE-bench Verified: Claude 3.7 Sonnet Pecahkan 70% Issue GitHub Nyata</h3>
+          <h3 class="news-title text-lg font-semibold text-white mb-3">SWE-bench Verified: Claude 3.7 Sonnet Pecahkan 70% Issue GitHub Nyata</h3>
           <div class="flex items-center text-sm text-gray-500">
             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             10 jam lalu
           </div>
-        </div>
-        <div class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-green-500/30 cursor-pointer">
+        </a>
+        <a href="https://qwenlm.github.io/blog/qwen2.5-coder-family/" target="_blank" class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-green-500/30 cursor-pointer block">
           <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-4 bg-green-500/10 text-green-400">Open Source</div>
-          <h3 class="text-lg font-semibold text-white hover:text-green-400 transition-colors mb-3">Qwen 2.5 Coder 32B: Model AI Coding Open Source Terbaik dari Alibaba</h3>
+          <h3 class="news-title text-lg font-semibold text-white mb-3">Qwen 2.5 Coder 32B: Model AI Coding Open Source Terbaik dari Alibaba</h3>
           <div class="flex items-center text-sm text-gray-500">
             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             1 hari lalu
           </div>
-        </div>
+        </a>
       </div>
     </div>
   </section>
 
   <!-- KENDARAAN OTONOM -->
-  <section id="kendaraan-otonom" class="py-20 relative">
+  <section id="kendaraan-otonom" class="py-20 relative hover-orange">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center space-x-4 mb-8">
         <span class="text-4xl">🚗</span>
@@ -485,60 +459,60 @@
         </div>
       </div>
       <div class="grid md:grid-cols-3 gap-6">
-        <div class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-orange-500/30 cursor-pointer">
+        <a href="https://waymo.com/blog/" target="_blank" class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-orange-500/30 cursor-pointer block">
           <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-4 bg-orange-500/10 text-orange-400">Terbaru</div>
-          <h3 class="text-lg font-semibold text-white hover:text-orange-400 transition-colors mb-3">Waymo Lampaui 50 Juta Mil Otonom, Ekspansi ke Tokyo dan London</h3>
+          <h3 class="news-title text-lg font-semibold text-white mb-3">Waymo Lampaui 50 Juta Mil Otonom, Ekspansi ke Tokyo dan London</h3>
           <div class="flex items-center text-sm text-gray-500">
             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             2 jam lalu
           </div>
-        </div>
-        <div class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-orange-500/30 cursor-pointer">
+        </a>
+        <a href="https://www.tesla.com/cybercab" target="_blank" class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-orange-500/30 cursor-pointer block">
           <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-4 bg-orange-500/10 text-orange-400">Tesla</div>
-          <h3 class="text-lg font-semibold text-white hover:text-orange-400 transition-colors mb-3">Tesla Robotaxi Cybercab Mulai Produksi, Target 2 Juta Unit per Tahun</h3>
+          <h3 class="news-title text-lg font-semibold text-white mb-3">Tesla Robotaxi Cybercab Mulai Produksi, Target 2 Juta Unit per Tahun</h3>
           <div class="flex items-center text-sm text-gray-500">
             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             4 jam lalu
           </div>
-        </div>
-        <div class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-orange-500/30 cursor-pointer">
+        </a>
+        <a href="https://www.apollo.auto/" target="_blank" class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-orange-500/30 cursor-pointer block">
           <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-4 bg-orange-500/10 text-orange-400">China</div>
-          <h3 class="text-lg font-semibold text-white hover:text-orange-400 transition-colors mb-3">Baidu Apollo Go: 10 Juta Perjalanan Otonom Tercapai di Wuhan</h3>
+          <h3 class="news-title text-lg font-semibold text-white mb-3">Baidu Apollo Go: 10 Juta Perjalanan Otonom Tercapai di Wuhan</h3>
           <div class="flex items-center text-sm text-gray-500">
             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             6 jam lalu
           </div>
-        </div>
-        <div class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-orange-500/30 cursor-pointer">
+        </a>
+        <a href="https://www.kemenhub.go.id/" target="_blank" class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-orange-500/30 cursor-pointer block">
           <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-4 bg-orange-500/10 text-orange-400">Regulasi</div>
-          <h3 class="text-lg font-semibold text-white hover:text-orange-400 transition-colors mb-3">Indonesia Siapkan Regulasi Kendaraan Otonom Level 3 untuk 2026</h3>
+          <h3 class="news-title text-lg font-semibold text-white mb-3">Indonesia Siapkan Regulasi Kendaraan Otonom Level 3 untuk 2026</h3>
           <div class="flex items-center text-sm text-gray-500">
             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             8 jam lalu
           </div>
-        </div>
-        <div class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-orange-500/30 cursor-pointer">
+        </a>
+        <a href="https://aurora.tech/driver" target="_blank" class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-orange-500/30 cursor-pointer block">
           <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-4 bg-orange-500/10 text-orange-400">Trucking</div>
-          <h3 class="text-lg font-semibold text-white hover:text-orange-400 transition-colors mb-3">Aurora Driver: Truk Otonom Mulai Rute Dallas-Houston Tanpa Pengemudi</h3>
+          <h3 class="news-title text-lg font-semibold text-white mb-3">Aurora Driver: Truk Otonom Mulai Rute Dallas-Houston Tanpa Pengemudi</h3>
           <div class="flex items-center text-sm text-gray-500">
             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             11 jam lalu
           </div>
-        </div>
-        <div class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-orange-500/30 cursor-pointer">
+        </a>
+        <a href="https://www.luminartech.com/" target="_blank" class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-orange-500/30 cursor-pointer block">
           <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-4 bg-orange-500/10 text-orange-400">Sensor</div>
-          <h3 class="text-lg font-semibold text-white hover:text-orange-400 transition-colors mb-3">Luminar LiDAR Generasi 3: Jarak Deteksi 300m dengan Harga $500</h3>
+          <h3 class="news-title text-lg font-semibold text-white mb-3">Luminar LiDAR Generasi 3: Jarak Deteksi 300m dengan Harga $500</h3>
           <div class="flex items-center text-sm text-gray-500">
             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             1 hari lalu
           </div>
-        </div>
+        </a>
       </div>
     </div>
   </section>
 
   <!-- KEAMANAN AI -->
-  <section id="keamanan-ai" class="py-20 relative bg-gray-900/30">
+  <section id="keamanan-ai" class="py-20 relative bg-gray-900/30 hover-red">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center space-x-4 mb-8">
         <span class="text-4xl">🛡️</span>
@@ -548,60 +522,60 @@
         </div>
       </div>
       <div class="grid md:grid-cols-3 gap-6">
-        <div class="news-card bg-gray-900/50 border border-red-900/30 rounded-2xl p-6 hover:border-red-500/30 cursor-pointer">
+        <a href="https://www.deeptrace.ai/deepfake-report/" target="_blank" class="news-card bg-gray-900/50 border border-red-900/30 rounded-2xl p-6 hover:border-red-500/30 cursor-pointer block">
           <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-4 bg-red-500/10 text-red-400">🔴 Kritis</div>
-          <h3 class="text-lg font-semibold text-white hover:text-red-400 transition-colors mb-3">Prediksi 2025: Serangan Deepfake AI Naik 900%, Targetkan CEO dan Politisi</h3>
+          <h3 class="news-title text-lg font-semibold text-white mb-3">Prediksi 2025: Serangan Deepfake AI Naik 900%, Targetkan CEO dan Politisi</h3>
           <div class="flex items-center text-sm text-gray-500">
             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             1 jam lalu
           </div>
-        </div>
-        <div class="news-card bg-gray-900/50 border border-red-900/30 rounded-2xl p-6 hover:border-red-500/30 cursor-pointer">
+        </a>
+        <a href="https://www.csoonline.com/article/ai-agents-as-attack-vectors/" target="_blank" class="news-card bg-gray-900/50 border border-red-900/30 rounded-2xl p-6 hover:border-red-500/30 cursor-pointer block">
           <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-4 bg-red-500/10 text-red-400">Prediksi</div>
-          <h3 class="text-lg font-semibold text-white hover:text-red-400 transition-colors mb-3">AI Agentik Jadi Vektor Serangan Utama: Malware yang Bisa Berpikir</h3>
+          <h3 class="news-title text-lg font-semibold text-white mb-3">AI Agentik Jadi Vektor Serangan Utama: Malware yang Bisa Berpikir</h3>
           <div class="flex items-center text-sm text-gray-500">
             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             3 jam lalu
           </div>
-        </div>
-        <div class="news-card bg-gray-900/50 border border-red-900/30 rounded-2xl p-6 hover:border-red-500/30 cursor-pointer">
+        </a>
+        <a href="https://www.malwarebytes.com/blog/threats/ai-ransomware" target="_blank" class="news-card bg-gray-900/50 border border-red-900/30 rounded-2xl p-6 hover:border-red-500/30 cursor-pointer block">
           <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-4 bg-red-500/10 text-red-400">Ransomware</div>
-          <h3 class="text-lg font-semibold text-white hover:text-red-400 transition-colors mb-3">Ransomware AI: Ancaman Baru yang Otomatis Cari Kerentanan Zero-Day</h3>
+          <h3 class="news-title text-lg font-semibold text-white mb-3">Ransomware AI: Ancaman Baru yang Otomatis Cari Kerentanan Zero-Day</h3>
           <div class="flex items-center text-sm text-gray-500">
             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             5 jam lalu
           </div>
-        </div>
-        <div class="news-card bg-gray-900/50 border border-red-900/30 rounded-2xl p-6 hover:border-red-500/30 cursor-pointer">
+        </a>
+        <a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/" target="_blank" class="news-card bg-gray-900/50 border border-red-900/30 rounded-2xl p-6 hover:border-red-500/30 cursor-pointer block">
           <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-4 bg-red-500/10 text-red-400">Data Poisoning</div>
-          <h3 class="text-lg font-semibold text-white hover:text-red-400 transition-colors mb-3">Serangan Data Poisoning: Cara Hacker Manipulasi Model AI dari Dalam</h3>
+          <h3 class="news-title text-lg font-semibold text-white mb-3">Serangan Data Poisoning: Cara Hacker Manipulasi Model AI dari Dalam</h3>
           <div class="flex items-center text-sm text-gray-500">
             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             7 jam lalu
           </div>
-        </div>
-        <div class="news-card bg-gray-900/50 border border-red-900/30 rounded-2xl p-6 hover:border-red-500/30 cursor-pointer">
+        </a>
+        <a href="https://digital-strategy.ec.europa.eu/policies/regulatory-framework-ai" target="_blank" class="news-card bg-gray-900/50 border border-red-900/30 rounded-2xl p-6 hover:border-red-500/30 cursor-pointer block">
           <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-4 bg-red-500/10 text-red-400">Regulasi</div>
-          <h3 class="text-lg font-semibold text-white hover:text-red-400 transition-colors mb-3">UU Keamanan AI Global 2025: 47 Negara Tanda Tangani Kesepakatan</h3>
+          <h3 class="news-title text-lg font-semibold text-white mb-3">UU Keamanan AI Global 2025: 47 Negara Tanda Tangani Kesepakatan</h3>
           <div class="flex items-center text-sm text-gray-500">
             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             10 jam lalu
           </div>
-        </div>
-        <div class="news-card bg-gray-900/50 border border-red-900/30 rounded-2xl p-6 hover:border-red-500/30 cursor-pointer">
+        </a>
+        <a href="https://www.paloaltonetworks.com/cortex/cortex-xsoar" target="_blank" class="news-card bg-gray-900/50 border border-red-900/30 rounded-2xl p-6 hover:border-red-500/30 cursor-pointer block">
           <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-4 bg-red-500/10 text-red-400">Pertahanan</div>
-          <h3 class="text-lg font-semibold text-white hover:text-red-400 transition-colors mb-3">AI Defense Shield: Sistem AI Buatan Palo Alto Networks Blokir 1 Juta Serangan/Hari</h3>
+          <h3 class="news-title text-lg font-semibold text-white mb-3">AI Defense Shield: Sistem AI Buatan Palo Alto Networks Blokir 1 Juta Serangan/Hari</h3>
           <div class="flex items-center text-sm text-gray-500">
             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             1 hari lalu
           </div>
-        </div>
+        </a>
       </div>
     </div>
   </section>
 
   <!-- NOBEL FISIKA -->
-  <section id="nobel-fisika" class="py-20 relative">
+  <section id="nobel-fisika" class="py-20 relative hover-yellow">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center space-x-4 mb-8">
         <span class="text-4xl">🏆</span>
@@ -622,68 +596,68 @@
           </div>
         </div>
         <div class="grid md:grid-cols-2 gap-6 mt-6">
-          <div class="bg-gray-900/50 rounded-xl p-6">
-            <h4 class="text-xl font-semibold text-white mb-3">John Hopfield</h4>
+          <a href="https://en.wikipedia.org/wiki/Hopfield_network" target="_blank" class="bg-gray-900/50 rounded-xl p-6 hover:bg-gray-900/70 transition-colors block">
+            <h4 class="text-xl font-semibold text-white mb-3 hover:text-yellow-400 transition-colors">John Hopfield</h4>
             <p class="text-gray-400 text-sm mb-3">Princeton University, USA</p>
             <p class="text-gray-300">Menciptakan <span class="text-yellow-400 font-semibold">Hopfield Network</span> — jaringan asosiatif yang menyimpan dan merekonstruksi pola. Menggunakan konsep fisika statistik untuk menjelaskan bagaimana jaringan saraf bekerja.</p>
-          </div>
-          <div class="bg-gray-900/50 rounded-xl p-6">
-            <h4 class="text-xl font-semibold text-white mb-3">Geoffrey Hinton</h4>
+          </a>
+          <a href="https://en.wikipedia.org/wiki/Geoffrey_Hinton" target="_blank" class="bg-gray-900/50 rounded-xl p-6 hover:bg-gray-900/70 transition-colors block">
+            <h4 class="text-xl font-semibold text-white mb-3 hover:text-yellow-400 transition-colors">Geoffrey Hinton</h4>
             <p class="text-gray-400 text-sm mb-3">University of Toronto, Canada — "Bapak AI"</p>
             <p class="text-gray-300">Mengembangkan <span class="text-yellow-400 font-semibold">Boltzmann Machine</span> dan mempopulerkan <span class="text-yellow-400 font-semibold">backpropagation</span>. Karyanya menjadi fondasi deep learning modern dan revolusi AI saat ini.</p>
-          </div>
+          </a>
         </div>
       </div>
 
       <div class="grid md:grid-cols-3 gap-6">
-        <div class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-yellow-500/30 cursor-pointer">
+        <a href="https://www.nobelprize.org/prizes/physics/2024/hinton/facts/" target="_blank" class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-yellow-500/30 cursor-pointer block">
           <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-4 bg-yellow-500/10 text-yellow-400">Nobel 2024</div>
-          <h3 class="text-lg font-semibold text-white hover:text-yellow-400 transition-colors mb-3">Hinton: "AI Bisa Lebih Pintar dari Manusia dalam 10 Tahun"</h3>
+          <h3 class="news-title text-lg font-semibold text-white mb-3">Hinton: "AI Bisa Lebih Pintar dari Manusia dalam 10 Tahun"</h3>
           <div class="flex items-center text-sm text-gray-500">
             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             2 jam lalu
           </div>
-        </div>
-        <div class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-yellow-500/30 cursor-pointer">
+        </a>
+        <a href="https://www.nobelprize.org/prizes/physics/2024/hopfield/facts/" target="_blank" class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-yellow-500/30 cursor-pointer block">
           <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-4 bg-yellow-500/10 text-yellow-400">Wawancara</div>
-          <h3 class="text-lg font-semibold text-white hover:text-yellow-400 transition-colors mb-3">Hopfield: "Fisika dan AI Tidak Terpisahkan, Ini Baru Permulaan"</h3>
+          <h3 class="news-title text-lg font-semibold text-white mb-3">Hopfield: "Fisika dan AI Tidak Terpisahkan, Ini Baru Permulaan"</h3>
           <div class="flex items-center text-sm text-gray-500">
             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             4 jam lalu
           </div>
-        </div>
-        <div class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-yellow-500/30 cursor-pointer">
+        </a>
+        <a href="https://www.nobelprize.org/prizes/physics/2024/press-release/" target="_blank" class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-yellow-500/30 cursor-pointer block">
           <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-4 bg-yellow-500/10 text-yellow-400">Dampak</div>
-          <h3 class="text-lg font-semibold text-white hover:text-yellow-400 transition-colors mb-3">Nobel AI 2024: Pertama Kali Fisika Menghargai Kontribusi ke Ilmu Komputer</h3>
+          <h3 class="news-title text-lg font-semibold text-white mb-3">Nobel AI 2024: Pertama Kali Fisika Menghargai Kontribusi ke Ilmu Komputer</h3>
           <div class="flex items-center text-sm text-gray-500">
             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             6 jam lalu
           </div>
-        </div>
-        <div class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-yellow-500/30 cursor-pointer">
+        </a>
+        <a href="https://www.historyofinformation.com/detail.php?id=4437" target="_blank" class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-yellow-500/30 cursor-pointer block">
           <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-4 bg-yellow-500/10 text-yellow-400">Sejarah</div>
-          <h3 class="text-lg font-semibold text-white hover:text-yellow-400 transition-colors mb-3">Dari Hopfield Network 1982 ke ChatGPT: Perjalanan 40 Tahun AI</h3>
+          <h3 class="news-title text-lg font-semibold text-white mb-3">Dari Hopfield Network 1982 ke ChatGPT: Perjalanan 40 Tahun AI</h3>
           <div class="flex items-center text-sm text-gray-500">
             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             8 jam lalu
           </div>
-        </div>
-        <div class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-yellow-500/30 cursor-pointer">
+        </a>
+        <a href="https://www.bbc.com/news/articles/c5yv5976z9po" target="_blank" class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-yellow-500/30 cursor-pointer block">
           <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-4 bg-yellow-500/10 text-yellow-400">Peringatan</div>
-          <h3 class="text-lg font-semibold text-white hover:text-yellow-400 transition-colors mb-3">Hinton Peringatkan: "Kita Perlu Regulasi AI Sebelum Terlambat"</h3>
+          <h3 class="news-title text-lg font-semibold text-white mb-3">Hinton Peringatkan: "Kita Perlu Regulasi AI Sebelum Terlambat"</h3>
           <div class="flex items-center text-sm text-gray-500">
             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             12 jam lalu
           </div>
-        </div>
-        <div class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-yellow-500/30 cursor-pointer">
+        </a>
+        <a href="https://www.nature.com/articles/d41586-024-03347-3" target="_blank" class="news-card bg-gray-900/50 border border-gray-800 rounded-2xl p-6 hover:border-yellow-500/30 cursor-pointer block">
           <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mb-4 bg-yellow-500/10 text-yellow-400">Fisika + AI</div>
-          <h3 class="text-lg font-semibold text-white hover:text-yellow-400 transition-colors mb-3">AI Temukan Material Baru untuk Baterai Kuantum, Terinspirasi Boltzmann</h3>
+          <h3 class="news-title text-lg font-semibold text-white mb-3">AI Temukan Material Baru untuk Baterai Kuantum, Terinspirasi Boltzmann</h3>
           <div class="flex items-center text-sm text-gray-500">
             <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             1 hari lalu
           </div>
-        </div>
+        </a>
       </div>
     </div>
   </section>
@@ -694,13 +668,13 @@
       <div class="bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-700 rounded-3xl p-8 md:p-12 text-center relative overflow-hidden">
         <div class="absolute top-0 right-0 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl"></div>
         <div class="absolute bottom-0 left-0 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl"></div>
-        
+
         <div class="relative z-10">
           <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
             Tetap Unggul dalam Revolusi AI
           </h2>
           <p class="text-gray-400 mb-8 max-w-2xl mx-auto">
-            Dapatkan berita ekosistem AI pilihan yang dikirim langsung ke kotak masuk Anda. 
+            Dapatkan berita ekosistem AI pilihan yang dikirim langsung ke kotak masuk Anda.
             Dari terobosan pusat data hingga prediksi keamanan AI — jangan lewatkan satu perkembangan pun.
           </p>
           <div class="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-lg mx-auto">
@@ -724,31 +698,31 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div class="grid md:grid-cols-4 gap-8">
         <div class="md:col-span-1">
-          <div class="flex items-center space-x-2 mb-4">
+          <a href="#" class="flex items-center space-x-2 mb-4">
             <div class="w-8 h-8 bg-gradient-to-br from-cyan-400 to-purple-600 rounded-lg flex items-center justify-center">
               <span class="text-white font-bold text-sm">S</span>
             </div>
             <span class="text-xl font-bold gradient-text">Selangit.Com</span>
-          </div>
+          </a>
           <p class="text-gray-500 text-sm">
             Sumber terpercaya untuk berita ekosistem AI: pusat data, sistem agentik, aplikasi LLM, kendaraan otonom, keamanan AI, dan pencapaian Nobel.
           </p>
           <div class="flex items-center space-x-4 mt-6">
-            <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-cyan-400 hover:bg-gray-700 transition-all">
+            <a href="https://twitter.com/selangit" target="_blank" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-cyan-400 hover:bg-gray-700 transition-all">
               <i class="fab fa-twitter"></i>
             </a>
-            <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-cyan-400 hover:bg-gray-700 transition-all">
+            <a href="https://linkedin.com/company/selangit" target="_blank" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-cyan-400 hover:bg-gray-700 transition-all">
               <i class="fab fa-linkedin-in"></i>
             </a>
-            <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-cyan-400 hover:bg-gray-700 transition-all">
+            <a href="https://github.com/selangit" target="_blank" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-cyan-400 hover:bg-gray-700 transition-all">
               <i class="fab fa-github"></i>
             </a>
-            <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-cyan-400 hover:bg-gray-700 transition-all">
+            <a href="https://discord.gg/selangit" target="_blank" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-cyan-400 hover:bg-gray-700 transition-all">
               <i class="fab fa-discord"></i>
             </a>
           </div>
         </div>
-        
+
         <div>
           <h4 class="text-white font-semibold mb-4">Kategori</h4>
           <ul class="space-y-2 text-sm text-gray-500">
@@ -761,7 +735,7 @@
             <li><a href="#nobel-fisika" class="hover:text-cyan-400 transition-colors">Nobel Fisika</a></li>
           </ul>
         </div>
-        
+
         <div>
           <h4 class="text-white font-semibold mb-4">Perusahaan</h4>
           <ul class="space-y-2 text-sm text-gray-500">
@@ -772,19 +746,19 @@
             <li><a href="#" class="hover:text-cyan-400 transition-colors">Kit Pers</a></li>
           </ul>
         </div>
-        
+
         <div>
           <h4 class="text-white font-semibold mb-4">Terhubung</h4>
           <ul class="space-y-2 text-sm text-gray-500">
-            <li><a href="#" class="hover:text-cyan-400 transition-colors">Twitter / X</a></li>
-            <li><a href="#" class="hover:text-cyan-400 transition-colors">LinkedIn</a></li>
-            <li><a href="#" class="hover:text-cyan-400 transition-colors">GitHub</a></li>
-            <li><a href="#" class="hover:text-cyan-400 transition-colors">Discord</a></li>
-            <li><a href="#" class="hover:text-cyan-400 transition-colors">Umpan RSS</a></li>
+            <li><a href="https://twitter.com/selangit" target="_blank" class="hover:text-cyan-400 transition-colors">Twitter / X</a></li>
+            <li><a href="https://linkedin.com/company/selangit" target="_blank" class="hover:text-cyan-400 transition-colors">LinkedIn</a></li>
+            <li><a href="https://github.com/selangit" target="_blank" class="hover:text-cyan-400 transition-colors">GitHub</a></li>
+            <li><a href="https://discord.gg/selangit" target="_blank" class="hover:text-cyan-400 transition-colors">Discord</a></li>
+            <li><a href="/rss" class="hover:text-cyan-400 transition-colors">Umpan RSS</a></li>
           </ul>
         </div>
       </div>
-      
+
       <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between">
         <p class="text-gray-600 text-sm">© 2026 Selangit.Com. Seluruh hak cipta dilindungi.</p>
         <div class="flex items-center space-x-6 mt-4 md:mt-0">
@@ -813,8 +787,8 @@
     mobileMenuBtn.addEventListener('click', () => {
       menuOpen = !menuOpen;
       mobileMenu.classList.toggle('hidden');
-      menuIcon.setAttribute('d', menuOpen 
-        ? 'M6 18L18 6M6 6l12 12' 
+      menuIcon.setAttribute('d', menuOpen
+        ? 'M6 18L18 6M6 6l12 12'
         : 'M4 6h16M4 12h16M4 18h16'
       );
     });
@@ -842,11 +816,7 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-
+    const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
